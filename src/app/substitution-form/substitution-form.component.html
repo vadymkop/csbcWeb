@@ -1,0 +1,61 @@
+<mat-card>
+  <p>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a activation date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <mat-label>Group</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let group of groups" [value]="group">
+          {{group}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
+      <mat-button-toggle value="italic">AB</mat-button-toggle>
+      <mat-button-toggle value="bold">A</mat-button-toggle>
+      <mat-button-toggle value="italic">B</mat-button-toggle>
+    </mat-button-toggle-group>
+  </p>
+  <p>
+    <input matInput type="number"/>
+  </p>
+  <p>
+    <mat-slide-toggle [(ngModel)]="disabledSubject">Disable subject</mat-slide-toggle>
+  </p>
+  <ng-template [ngIf]="!disabledSubject">
+    <p class="subject-values">
+      <mat-form-field>
+        <mat-label>Lesson</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let lesson of lessons" [value]="lesson">
+            {{lesson}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Teacher</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let teacher of teachers" [value]="teacher">
+            {{teacher}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Audience</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let audience of audiences" [value]="audience">
+            {{audience}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+  </ng-template>
+</mat-card>
