@@ -1,33 +1,46 @@
-<mat-card>
-  <p>
-    <mat-form-field>
+<mat-card class="substitution-card">
+  <div class="datetime-field">
+    <mat-form-field class="date-field">
       <input matInput [matDatepicker]="picker" placeholder="Choose a activation date">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-  </p>
-  <p>
-    <mat-form-field>
-      <mat-label>Group</mat-label>
+    <mat-form-field class="time-field">
+      <mat-label>Number</mat-label>
       <mat-select>
-        <mat-option *ngFor="let group of groups" [value]="group">
-          {{group}}
-        </mat-option>
+        <mat-option *ngFor="let num of subjectNumbers" [value]="num">{{num}}</mat-option>
       </mat-select>
     </mat-form-field>
+  </div>
+  <div class="groups-param">
+    <div class="groups-control">
+      <button mat-stroked-button
+              (click)="onAddGroup()">Add group</button>
+    </div>
+    <div class="groups">
+      <div class="group-parameters" *ngFor="let group of substitutionObj.groups">
+        <div class="groups-field">
+          <mat-form-field>
+            <mat-label>Group</mat-label>
+            <mat-select [ngModel]="group.name">
+              <mat-option *ngFor="let groupName of groups" [value]="groupName">
+                {{groupName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="subgroups">
+          <mat-checkbox [ngModel]="group.subgroup.a">A</mat-checkbox>
+          <mat-checkbox [ngModel]="group.subgroup.b">B</mat-checkbox>
+        </div>
+        <button mat-stroked-button *ngIf="substitutionObj.groups.length>1" (click)="onDeleteGroup(group)">-</button>
+      </div>
+    </div>
+  </div>
 
-    <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
-      <mat-button-toggle value="italic">AB</mat-button-toggle>
-      <mat-button-toggle value="bold">A</mat-button-toggle>
-      <mat-button-toggle value="italic">B</mat-button-toggle>
-    </mat-button-toggle-group>
-  </p>
-  <p>
-    <input matInput type="number"/>
-  </p>
-  <p>
+  <div class="substitution-mode">
     <mat-slide-toggle [(ngModel)]="disabledSubject">Disable subject</mat-slide-toggle>
-  </p>
+  </div>
   <ng-template [ngIf]="!disabledSubject">
     <p class="subject-values">
       <mat-form-field>

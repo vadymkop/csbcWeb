@@ -1,3 +1,89 @@
-.subject-values{
+.substitution-card{
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
+  width:100%;
+  max-width: 800px;
+}
 
+.substitution-card > *{
+  margin: 5px 0;
+}
+
+.datetime-field, .group-parameters,
+.substitution-mode, .subgroups,
+.groups-param, .groups{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+.groups-control{
+  align-self: flex-start;
+}
+
+.group-parameters{
+  flex-grow: .5;
+}
+
+.groups-param{
+  justify-items: space-between;
+}
+
+.groups{
+  flex-direction: column;
+}
+
+.subgroups *{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.subject-values{
+  display: flex;
+  justify-content: space-evenly;
+  align-content: space-evenly;
+}
+
+@media only screen and (max-width: 400px) {
+
+  .groups-param{
+    align-items: center;
+  }
+
+  .datetime-field,
+  .group-parameters,
+  .groups-param{
+    align-items: stretch;
+  }
+
+  .groups-control{
+    align-self: center;
+  }
+
+  .group-parameters{
+    flex-direction: column;
+  }
+}
+
+
+@media only screen and (max-width: 500px) {
+
+  .datetime-field, .subject-values, .groups-param{
+    flex-direction: column;
+  }
+
+  .substitution-mode{
+    /*justify-content: center;*/
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  .date-field{
+  }
+
+  .subject-values{
+    flex-direction: column;
+  }
 }
