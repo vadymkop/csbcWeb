@@ -6,6 +6,10 @@
   max-width: 800px;
 }
 
+.group-parameters{
+  margin: 10px 0;
+}
+
 .substitution-card > *{
   margin: 5px 0;
 }
@@ -26,10 +30,6 @@
   flex-grow: .5;
 }
 
-.groups-param{
-  justify-items: space-between;
-}
-
 .groups{
   flex-direction: column;
 }
@@ -45,6 +45,11 @@
   align-content: space-evenly;
 }
 
+.send-btn{
+  display: flex;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 400px) {
 
   .groups-param{
@@ -53,8 +58,10 @@
 
   .datetime-field,
   .group-parameters,
-  .groups-param{
+  .groups-param,
+  .groups-control{
     align-items: stretch;
+
   }
 
   .groups-control{
@@ -71,6 +78,16 @@
 
   .datetime-field, .subject-values, .groups-param{
     flex-direction: column;
+  }
+
+  .datetime-field,
+  .group-parameters,
+  .groups-param{
+    align-items: stretch;
+  }
+
+  .groups-param > *, .groups-field > *{
+    display: contents;
   }
 
   .substitution-mode{

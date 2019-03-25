@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Substitution} from '../model/substitution';
 
 @Component({
   selector: 'app-substitution-form',
@@ -7,30 +8,27 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SubstitutionFormComponent implements OnInit {
 
-  groups = ['er4', 'rag2', 'ergea4', '2ar', 'age4', 'rag2', 'ergea4', '2ar', 'age4', 'rag2', 'ergea4', '2ar', 'age4', 'rag2', 'ergea4', '2ar', 'age4', 'rag2', 'ergea4', '2ar', 'age4', 'rag2', 'ergea4', '2ar', 'age4'];
+  groups = ['er4', 'rag2', 'ergea4', '2ar', 'age4', 'rag2',
+    'ergea4', '2ar', 'age4', 'rag2', 'ergea4', '2ar', 'age4',
+    'rag2', 'ergea4', '2ar', 'age4', 'rag2', 'ergea4', '2ar', 'age4',
+    'rag2', 'ergea4', '2ar', 'age4'];
   lessons = ['er4', 'rag2', 'ergea4', '2ar', 'age4'];
   teachers = ['er4', 'rag2', 'ergea4', '2ar', 'age4'];
   audiences = ['er4', 'rag2', 'ergea4', '2ar', 'age4'];
   subjectNumbers = [1, 2, 3, 4, 5, 6, 7, 8];
 
-  disabledSubject = false;
-
-  activationDate = null;
   substitutionObj = {
-    activationDate: this.activationDate,
+    activationDate: null,
     subjectNumber: 1,
-    groups: [
-      {
-        name: null,
-        subgroup: {
-          a: true,
-          b: true
-        }
-      }
-    ]
+    disabledSubject: false,
+    groups:[],
+    subjectName: null,
+    teacher: null,
+    audience: null
   };
 
   constructor() {
+    this.onAddGroup();
   }
 
   ngOnInit() {
@@ -39,10 +37,10 @@ export class SubstitutionFormComponent implements OnInit {
   onAddGroup() {
     this.substitutionObj.groups.push(
       {
-        name: null,
-        subgroup: {
-          a: true,
-          b: true
+        name: "",
+        subgroup:{
+          a:true,
+          b:true
         }
       }
     );
@@ -51,5 +49,9 @@ export class SubstitutionFormComponent implements OnInit {
 
   onDeleteGroup(group: any) {
     this.substitutionObj.groups.pop();
+  }
+
+  onSubmit(){
+    console.dir(this);
   }
 }
