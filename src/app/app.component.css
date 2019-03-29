@@ -1,4 +1,4 @@
-.reg-subs-card{
-  display:flex;
-  justify-content: center;
+.page{
+  height: calc(100vh - 64px);
 }
+

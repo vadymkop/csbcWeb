@@ -9,12 +9,21 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {RouterModule, Routes} from '@angular/router';
+import { NotValidLinkPageComponent } from './not-valid-link-page/not-valid-link-page.component';
+
+const appRoutes: Routes = [
+  { path: 'substitutions/:token', component: SubstitutionFormComponent },
+  { path: 'not-valid-token', component: NotValidLinkPageComponent },
+  { path: '', component: NotValidLinkPageComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     TeacherCardComponent,
     SubstitutionFormComponent,
+    NotValidLinkPageComponent,
 
   ],
   imports: [
@@ -26,6 +35,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HttpClientModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
